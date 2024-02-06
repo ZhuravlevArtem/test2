@@ -36,6 +36,7 @@ print(text.strip())
 _____________________________________________________________________________
 lol.py
 
+# Использование библиотеки PyQt5.QtWidgets
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout
 app = QApplication([])
 window = QWidget()
