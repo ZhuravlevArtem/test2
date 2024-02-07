@@ -1,6 +1,7 @@
-                                            Обоснование алгоритма
+# Обоснование алгоритма
 Алгоритм обучения YOLOv8 является одним из самых инновационных и эффективных методов в области компьютерного зрения. Он обладает уникальной способностью обнаруживать и классифицировать объекты на изображениях с высокой точностью и скоростью. Это делает его идеальным выбором для различных практических приложений, таких как автоматическое распознавание цифр и так далее.
 
+# Библиотеки
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushButton
 from PyQt5.QtGui import QPixmap
@@ -26,65 +27,65 @@ import random
         self.button.setGeometry(220, 10, 170, 30)
         self.button.clicked.connect(self.open_image)
 
-    # Открытие фотографии
+  # Открытие фотографии
     def open_image(self):
         global r
         image_path = self.text_input.text()
         img = Image.open(image_path)
-        # изменяем размер
+  # изменяем размер
         new_image = img.resize((400, 400))
         # сохранение картинки
         new_image.save('result0.jpg')
         pixmap = QPixmap('result0.jpg')
         self.label.setPixmap(pixmap)
 
-        # Подключение обученной модели YOLO
+  # Подключение обученной модели YOLO
         model = YOLO(r'C:\Users\student.LAPI.000\PycharmProjects\pythonProject\last30.pt')
         image = image_path
         img = Image.open(image)
 
-        # изменяем размер
+  # изменяем размер
         new_image = img.resize((500, 1000))
         new_image.save('Image.png')
 
-        # Загрузка изображения и получение результатов обнаружения
+  # Загрузка изображения и получение результатов обнаружения
         results = model(r'C:\Users\student.LAPI.000\PycharmProjects\pythonProject\Image.png')
 
-        # Извлечение координат прямоугольников
+  # Извлечение координат прямоугольников
         x1, y1, x2, y2 = results[0].boxes.xyxy[0].tolist()
 
-        # Вывод координат
+  # Вывод координат
         print(x1, y1, x2, y2)
 
-        # Обрезание картинки
+  # Обрезание картинки
         im = Image.open('Image.png')
         im_crop = im.crop((x1, y1, x2, y2))
         im_crop.save('result.jpg', quality=95)
 
-        # Подключение обученной модели YOLO
+  # Подключение обученной модели YOLO
         model2 = YOLO(r'C:\Users\student.LAPI.000\PycharmProjects\pythonProject\best.pt')
 
-        # Загрузка изображения и получение результатов обнаружения
+  # Загрузка изображения и получение результатов обнаружения
         results2 = model2(r'C:\Users\student.LAPI.000\PycharmProjects\pythonProject\result.jpg')
 
-        # Извлечение координат прямоугольников
+  # Извлечение координат прямоугольников
         x12, y12, x22, y22 = results2[0].boxes.xyxy[0].tolist()
 
-        # Вывод координат
+  # Вывод координат
         print(x12, y12, x22, y22)
 
-        # Просмотр результатов
+  # Просмотр результатов
         for r in results2:
             print(r.boxes.cls)  # print the Probs object containing the detected class probabilities
         random_number = random.randint(0, 2)
         class_value_str = r.boxes.cls[random_number]
         class_value = int(class_value_str)
 
-        # Обрезание картинки
+  # Обрезание картинки
         im = Image.open('result.jpg')
         im_crop = im.crop((x12, y12, x22, y22))
         im_crop.save('result2.jpg', quality=95)
-        # Вывод результатов
+  # Вывод результатов
         lol = 'number:'
         III = '|'
         print('')
@@ -105,7 +106,7 @@ import random
 
 
 # Создание экземпляра приложения Qt
-if __name__ == '__main__':
+    if __name__ == '__main__':
     app = QApplication(sys.argv)
     window = ImageWindow()
     window.show()
