@@ -8,7 +8,7 @@ import random
 
 
 # Создание окна
-class ImageWindow(QMainWindow):
+    class ImageWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("САМАЯ ЛУЧШАЯ И ТОЧНАЯ СИСТЕМА")
