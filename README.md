@@ -2,12 +2,12 @@
 Алгоритм обучения YOLOv8 является одним из самых инновационных и эффективных методов в области компьютерного зрения. Он обладает уникальной способностью обнаруживать и классифицировать объекты на изображениях с высокой точностью и скоростью. Это делает его идеальным выбором для различных практических приложений, таких как автоматическое распознавание цифр и так далее.
 
 # Библиотеки
-import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushButton
-from PyQt5.QtGui import QPixmap
-from PIL import Image
-from ultralytics import YOLO
-import random
+      import sys
+      from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushButton
+      from PyQt5.QtGui import QPixmap
+      from PIL import Image
+      from ultralytics import YOLO
+      import random
 
 
 # Создание окна
